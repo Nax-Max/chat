@@ -17,10 +17,17 @@
         };
     }
 
-    function LogInCtrl($scope, $location, socket) {
+    function LogInCtrl($scope, $location, socket, localStorageService) {
+
+        var user = JSON.parse(localStorageService.get("chatUser"));
+
+        if (user) {
+            $location.path("/chat-room");
+        }
 
         $scope.enter = function (nickname) {
-            socket.emit('event~log_in', {nickname: nickname});
+            if (nickname.length > 5)
+                socket.emit('event~log_in', {nickname: nickname});
             // $location.path("chat-room");
         };
 
@@ -37,6 +44,9 @@
             if (data.notification === "User exist please change nickname") {
 
             } else {
+                var user = {nickname: data.nickname, token: data.token};
+                localStorageService.set("chatUser", JSON.stringify(user));
+
                 $location.path("chat-room");
             }
         });

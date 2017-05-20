@@ -3,7 +3,7 @@
  */
 (function () {
     'use strict';
-    var main = angular.module('app', ['ngRoute', 'ysilvela.socket-io']);
+    var main = angular.module('app', ['ngRoute', 'ysilvela.socket-io', 'LocalStorageModule']);
 
     main.factory('socket', function (socketFactory) {
         return socketFactory({
@@ -13,7 +13,14 @@
     });
 
     //-----------------------------------------------------------------------------------------------------------Routing
-    main.config(['$routeProvider', function ($routeProvider) {
+    main.config(['$routeProvider', 'localStorageServiceProvider', function ($routeProvider, localStorageServiceProvider) {
+
+        localStorageServiceProvider
+            .setPrefix('Nasim-Chat');
+
+        localStorageServiceProvider
+            .setStorageType('localStorage');
+
         $routeProvider.when('/', {
             template: '<log-in></log-in>'
         })

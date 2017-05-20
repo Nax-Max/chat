@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "chat for interview",
   "dependencies": {
+    "angular-local-storage": "^0.6.0",
     "angularjs-socket-io": "^0.7.0",
     "bootstrap": "^3.3.7",
     "jquery": "^3.2.1",
