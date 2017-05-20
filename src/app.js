@@ -3,7 +3,14 @@
  */
 (function () {
     'use strict';
-    var main = angular.module('app', ['ngRoute']);
+    var main = angular.module('app', ['ngRoute', 'ysilvela.socket-io']);
+
+    main.factory('socket', function (socketFactory) {
+        return socketFactory({
+            prefix: 'event~',
+            ioSocket: io.connect('localhost:3333')
+        });
+    });
 
     //-----------------------------------------------------------------------------------------------------------Routing
     main.config(['$routeProvider', function ($routeProvider) {

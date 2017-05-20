@@ -17,7 +17,7 @@
         };
     }
 
-    function ChatRoomCtrl($scope) {
+    function ChatRoomCtrl($scope, socket) {
 
         $scope.sendMessage = function () {
             function soundClick() {
@@ -26,7 +26,10 @@
                 audio.autoplay = true; // Автоматически запускаем
             }
             console.log("sendMessage");
-        }
+        };
+
+
+
 
 
     }

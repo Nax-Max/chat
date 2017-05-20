@@ -3,8 +3,10 @@
   "version": "0.0.1",
   "description": "chat for interview",
   "dependencies": {
+    "angularjs-socket-io": "^0.7.0",
+    "bootstrap": "^3.3.7",
     "jquery": "^3.2.1",
-    "bootstrap": "^3.3.7"
+    "socket.io-client": "^2.0.1"
   },
   "devDependencies": {
     "angular": "^1.6.4",
