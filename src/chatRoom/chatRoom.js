@@ -23,9 +23,9 @@
         $scope.messages = [];
         $scope.userList = [];
 
-        $scope.user = JSON.parse(localStorageService.get("chatUser"));
+        $scope.currentUser = JSON.parse(localStorageService.get("chatUser"));
 
-        if (!$scope.user || !$scope.user.token) {
+        if ($scope.currentUser === null) {
             $location.path("/");
         }
 
@@ -40,13 +40,12 @@
             $scope.userList = data.userList;
             console.log(data);
             console.log($scope.userList);
-
         });
 
         // functions
         $scope.sendMessage = function (messageText) {
             if (messageText.length > 0) {
-                var message = {text: messageText, author: $scope.user.nickname};
+                var message = {text: messageText, author: $scope.currentUser.nickname};
                 socket.emit('event~new_message', {message: message});
                 $scope.newMessage = "";
             }
@@ -54,8 +53,12 @@
 
         $scope.logOut = function () {
             localStorageService.remove("chatUser");
-            socket.emit('event~log_out', {nickname: $scope.user.nickname});
+            socket.emit('event~log_out', {nickname: $scope.currentUser.nickname});
             $location.path("/");
+        };
+
+        $scope.changeRoute = function (nickname) {
+            $location.path("/chat/" + nickname);
         };
 
     }

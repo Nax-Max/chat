@@ -21,20 +21,18 @@
         localStorageServiceProvider
             .setStorageType('localStorage');
 
-        $routeProvider.when('/', {
-            template: '<log-in></log-in>'
-        })
-            .when('/chat', {
-                template: '<chat></chat>'
-
+        $routeProvider
+            .when('/', {
+                template: '<log-in></log-in>'
             })
+
             .when('/chat-room', {
                 template: '<chat-room></chat-room>'
-
             })
-        /*  .when('/add_abonent_page', {
-         template: '<add-abonent-page></add-abonent-page>'
-         })*/;
+
+            .when('/chat/:nickname', {
+                template: '<chat></chat>'
+            });
 
         $routeProvider.otherwise({redirectTo: ''});
     }]);

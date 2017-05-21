@@ -198,7 +198,6 @@
 
 
 <div class="container bootstrap snippet">
-
     <div class="row">
         <div class="col-md-4 bg-white ">
             <span class="input-group-btn">
@@ -210,7 +209,16 @@
             Количество {{userList.length}}
             <ul class="friend-list" ng-repeat="user in userList">
                 <li class="active bounceInDown">
-                    <a href="#" class="clearfix">
+
+                    <a ng-click="changeRoute(user)" class="clearfix" ng-if="user !== currentUser.nickname">
+                        <img src="../../chatForLetsTaxi/img/user_1.jpg" alt="" class="img-circle">
+                        <div class="friend-name">
+                            <strong>{{user}}</strong>
+                        </div>
+                        <div class="last-message text-muted">Сообщение</div>
+                        <small class="chat-alert label label-danger">Новое сообщение</small>
+                    </a>
+                    <a class="clearfix" ng-if="user === currentUser.nickname">
                         <img src="../../chatForLetsTaxi/img/user_1.jpg" alt="" class="img-circle">
                         <div class="friend-name">
                             <strong>{{user}}</strong>
@@ -225,7 +233,8 @@
         <div class="col-md-8 bg-white ">
             <div class="chat-message">
                 <ul class="chat" ng-repeat="message in messages">
-                    <li class="left clearfix" ng-if="message.author !== 'admin-ggg-max-nax' && message.author !== user.nickname">
+                    <li class="left clearfix"
+                        ng-if="message.author !== 'admin-ggg-max-nax' && message.author !== currentUser.nickname">
                     	<span class="chat-img pull-left">
                     		<img src="../../chatForLetsTaxi/img/user_3.jpg" alt="User Avatar">
                     	</span>
@@ -241,7 +250,7 @@
                             </p>
                         </div>
                     </li>
-                    <li class="right clearfix" ng-if="message.author === user.nickname">
+                    <li class="right clearfix" ng-if="message.author === currentUser.nickname">
                     	<span class="chat-img pull-right">
                     		<img src="../../chatForLetsTaxi/img/user_1.jpg" alt="User Avatar">
                     	</span>
@@ -273,7 +282,8 @@
             </div>
             <div class="chat-box bg-white">
                 <div class="input-group">
-                    <input class="form-control border no-shadow no-rounded" placeholder="Введите сообщение" ng-model="newMessage">
+                    <input class="form-control border no-shadow no-rounded" placeholder="Введите сообщение"
+                           ng-model="newMessage">
                     <span class="input-group-btn">
             			<button ng-click="sendMessage(newMessage)" class="btn btn-success no-rounded" type="button">Отправить</button>
             		</span>
