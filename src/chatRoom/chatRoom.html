@@ -203,15 +203,13 @@
             <span class="input-group-btn">
                 <button ng-click="logOut()" class="btn btn-success no-rounded" type="button">Выйти</button>
             </span>
-            <div class=" row border-bottom padding-sm" style="height: 40px;">
-                Участники
-            </div>
-            Количество {{userList.length}}
+            <br/>
+            <p>Количество {{userList.length}}</p>
             <ul class="friend-list" ng-repeat="user in userList">
                 <li class="active bounceInDown">
 
                     <a ng-click="changeRoute(user)" class="clearfix" ng-if="user !== currentUser.nickname">
-                        <img src="../../chatForLetsTaxi/img/user_1.jpg" alt="" class="img-circle">
+                        <img src="../../chatForTaxi-master/img/user_1.jpg" alt="" class="img-circle">
                         <div class="friend-name">
                             <strong>{{user}}</strong>
                         </div>
@@ -219,7 +217,7 @@
                         <small class="chat-alert label label-danger">Новое сообщение</small>
                     </a>
                     <a class="clearfix" ng-if="user === currentUser.nickname">
-                        <img src="../../chatForLetsTaxi/img/user_1.jpg" alt="" class="img-circle">
+                        <img src="../../chatForTaxi-master/img/user_1.jpg" alt="" class="img-circle">
                         <div class="friend-name">
                             <strong>{{user}}</strong>
                         </div>
@@ -236,7 +234,7 @@
                     <li class="left clearfix"
                         ng-if="message.author !== 'admin-ggg-max-nax' && message.author !== currentUser.nickname">
                     	<span class="chat-img pull-left">
-                    		<img src="../../chatForLetsTaxi/img/user_3.jpg" alt="User Avatar">
+                    		<img src="../../chatForTaxi-master/img/user_3.jpg" alt="User Avatar">
                     	</span>
                         <div class="chat-body clearfix">
                             <div class="header">
@@ -252,7 +250,7 @@
                     </li>
                     <li class="right clearfix" ng-if="message.author === currentUser.nickname">
                     	<span class="chat-img pull-right">
-                    		<img src="../../chatForLetsTaxi/img/user_1.jpg" alt="User Avatar">
+                    		<img src="../../chatForTaxi-master/img/user_1.jpg" alt="User Avatar">
                     	</span>
                         <div class="chat-body clearfix">
                             <div class="header">
@@ -266,7 +264,7 @@
                     </li>
                     <li class="right clearfix" ng-if="message.author === 'admin-ggg-max-nax'">
                     	<span class="chat-img pull-right">
-                    		<img src="../../chatForLetsTaxi/img/user_1.jpg" alt="User Avatar">
+                    		<img src="../../chatForTaxi-master/img/user_1.jpg" alt="User Avatar">
                     	</span>
                         <div class="chat-body clearfix">
                             <div class="header">

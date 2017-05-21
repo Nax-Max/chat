@@ -8,32 +8,33 @@
                     </div>
                     <div class="portlet-widgets">
                         <div class="btn-group">
-                            <button ng-click="goBack()">&times;</button> {{messages.length}}
+                            <button class="btn btn-primary" ng-click="goBack()">
+                                <i class="	glyphicon glyphicon-remove"></i>
+                            </button>
+                            {{messages.length}}
                         </div>
                         <span class="divider"></span>
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div id="chat" class="panel-collapse collapse in">
-                    <div ng-repeat="privateMessage in privateMessages track by $index">
+                    <div>
                         <div class="portlet-body chat-widget" style="overflow-y: auto; width: auto; height: 300px;">
-                            <div class="row">
+                            <div class="row" ng-repeat="privateMessage in privateMessages track by $index">
                                 <div class="col-lg-12">
                                     <div class="media">
                                         <a class="pull-left" href="#">
                                             <img class="media-object img-circle"
-                                                 src="../../chatForLetsTaxi/img/user_1.jpg" alt="">
+                                                 src="../../chatForTaxi-master/img/user_1.jpg" alt="">
                                         </a>
                                         <div class="media-body">
-                                            <h4 class="media-heading">{{privateMessage.author}}
-                                                <span class="small pull-right">дд.мм.гг мм.сс получателя</span>
-                                            </h4>
+                                            <h4 class="media-heading">{{privateMessage.author}}</h4>
                                             <p>{{privateMessage.text}}</p>
                                         </div>
                                     </div>
+                                    <hr>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="portlet-footer">
