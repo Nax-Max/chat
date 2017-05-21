@@ -8,7 +8,7 @@
     main.factory('socket', function (socketFactory) {
         return socketFactory({
             prefix: 'event~',
-            ioSocket: io.connect('localhost:3333')
+            ioSocket: io.connect('52.179.9.188:3333')
         });
     });
 
